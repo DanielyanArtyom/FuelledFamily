@@ -1,0 +1,134 @@
+@import "_mixin.scss";
+
+
+.header{
+    background-color: $blackColor;
+    width: 100% !important;
+    position: fixed;
+    z-index: 100;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $segoeFont;
+        font-size: 20px;
+        line-height: 27px;
+        height: auto;
+        width: 100%;
+    }
+    .logo {
+        padding:13px 0;
+    }
+
+    .menu {
+        margin-right: auto;
+        @media(max-width:1145px) {
+            margin-right: 0;
+            margin-left: auto;
+            margin-top: 5px;
+        }
+    }
+    &__getStarted {
+        color:#ffffff;
+        padding:9px 38px;
+        background: transparent linear-gradient(90deg, #EF6D21 0%, #D45125 100%) 0% 0% no-repeat;
+        border-radius: 4px;
+        margin-left:25px;
+        @media(max-width:550px) {
+            font-size: 14px;
+        }
+    }
+}
+
+.header__list {
+    display: flex;
+    align-items: center;
+    @media(max-width:1145px) {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin-top: 50px;
+        background: rgba(184, 184, 184, 0.9);
+        z-index: 1000;
+        overflow: auto;
+        opacity: 0;
+        top:-850px;
+        transition: all 0.3s ease-in-out;
+        
+        &.active-header{
+            top:35px;
+            opacity: 1;
+            text-align: center;
+            .header__list-element {
+                margin-left:0;
+                padding: 55px 0;
+            }
+        }
+    }
+    &-element {
+        margin-left: 50px;
+    }
+    &-link {
+        color:#ffffff;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color:$orangeColor;
+        }
+
+        &.chosen {
+            color:$orangeColor;
+        }
+    }
+} 
+.menu.menu-open {
+    .icon {
+        span:nth-child(1),span:nth-child(4) {
+            top: 18px;
+            left: 50%;
+            width: 0;
+        }
+        span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+// Burger Menu
+.icon {
+    display: none;
+    width: 45px;
+    height: 35px;
+    position: relative;
+    cursor: pointer;
+    z-index: 150;
+
+    span {
+        display: block;
+        position: absolute;
+        height: 6px;
+        width: 100%;
+        background: $orangeColor;
+        border-radius: 9px;
+        left:0;
+        transition: rotate(0deg);
+        transition: all 0.25s ease-in-out;
+
+        &:nth-child(1){
+            top:0;
+        }
+        &:nth-child(2),&:nth-child(3){
+            top:13px;
+        }
+        &:nth-child(4){
+            top:26px;
+        }
+    }
+    @media(max-width:1145px) {
+        display: inline-block;
+    }
+}
